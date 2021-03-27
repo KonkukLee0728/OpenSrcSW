@@ -59,8 +59,6 @@ public class indexer {
         createHash();
         saveHash();
         readHash();
-        System.out.println(saveResult.get("떡"));
-        System.out.println("");
     }
 
     public static void calIndexer(String docId, String[] input) {
