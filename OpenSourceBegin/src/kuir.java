@@ -22,7 +22,7 @@ public class kuir {
             mk.writeXml();
         } else if(args[0].equals("-i")) {
             indexer test = new indexer();
-            indexer.readXml(new File(args[1]+"index.xml"));
+            indexer.readXml(new File(args[1]));
 //            indexer.readXml(new File("/Users/jameslee/konkuk_git/week02/SimpleIR/index.xml"));
         } else if(args[0].equals("-s")) {
             if(args[2].equals("query")) {
