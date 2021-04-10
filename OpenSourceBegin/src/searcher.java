@@ -24,6 +24,7 @@ public class searcher {
     int[] count = new int[MAX];
     String[] getTitle = new String[5];
     String[] getBody = new String[5];
+    Double querySum= 0.0;
 
     public void queryInput(){
         Scanner scan = new Scanner(System.in);
