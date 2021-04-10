@@ -195,14 +195,16 @@ public class searcher {
             }
         }
 
-        for(int i=0; i<3; i++) {
-            System.out.println((i+1)+". "+ getTitle[DocID[i]] + " " +SimResult[i]);
-        }
+//        for(int i=0; i<3; i++) {
+//            System.out.println((i+1)+". "+ getTitle[DocID[i]] + " " +SimResult[i]);
+//        }
 
         for(int i=0; i<3; i++) {
             Double resultcos;
+
             resultcos = SimResult[i] / (querySum + Math.sqrt(SimResult[i]));
-            System.out.println(resultcos);
+            if(resultcos ==0) break;
+            System.out.println(getTitle[DocID[i]] + "   " +resultcos);
         }
     }
 }
