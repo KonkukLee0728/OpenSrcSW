@@ -70,10 +70,10 @@ public class searcher {
 
         HashMap hashMap = (HashMap) object;
 
-        CalcSim(hashMap);
+        InnerProduct(hashMap);
     }
 
-    public void CalcSim(HashMap hashMap) {
+    public void InnerProduct(HashMap hashMap) {
         Iterator<String> it = hashMap.keySet().iterator();
         Double[] SimResult = new Double[10];
         int[] DocID = new int[10];
