@@ -73,7 +73,63 @@ public class searcher {
 
         HashMap hashMap = (HashMap) object;
 
+        InnerProduct(hashMap);
         CalcSim(hashMap);
+    }
+
+    public void InnerProduct(HashMap hashMap) {
+        Iterator<String> it = hashMap.keySet().iterator();
+        Double[] SimResult = new Double[10];
+        int[] DocID = new int[10];
+        for(int i=0; i<SimResult.length; i++) {
+            SimResult[i] = 0.0;
+            DocID[i]=i;
+        }
+
+        while(it.hasNext()) {
+            String key = it.next();
+
+            if(key ==  null)
+                continue;
+            for(int i=0; i<LEN; i++) {
+                if (key.equals(word[i])){
+                    String getIndex = (String) hashMap.get(key);
+                    String[] tmt = new String[10];
+                    tmt=getIndex.split(" ");
+
+                    for(int j=0; j<tmt.length; j+=2) {
+                        int doc_id = Integer.parseInt(tmt[j]);
+                        double value = Double.parseDouble(tmt[j+1]);
+                        SimResult[doc_id] += value * count[i];
+                    }
+                }
+            }
+        }
+
+        for(int i=0; i<10; i++) {
+            for(int j=0; j<10; j++) {
+                if(SimResult[i]>SimResult[j]) {
+                    Double tmp = SimResult[i];
+                    SimResult[i] = SimResult[j];
+                    SimResult[j] = tmp;
+                    int tmt = DocID[i];
+                    DocID[i]=DocID[j];
+                    DocID[j] = tmt;
+                }
+                else if(DocID[i]<DocID[j]) {
+                    Double tmp = SimResult[i];
+                    SimResult[i] = SimResult[j];
+                    SimResult[j] = tmp;
+                    int tmt = DocID[i];
+                    DocID[i]=DocID[j];
+                    DocID[j] = tmt;
+                }
+            }
+        }
+
+        for(int i=0; i<3; i++) {
+            System.out.println((i+1)+". "+ getTitle[DocID[i]] + " " +SimResult[i]);
+        }
     }
 
     public void CalcSim(HashMap hashMap) {
